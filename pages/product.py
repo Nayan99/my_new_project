@@ -36,5 +36,11 @@ class Product:
             "category": self.category
         }
 
+    # метод сравнения товаров по цене
+    def is_more_expensive_than(self, other_product):
+        if self.price > other_product.price:
+            return True
+        return False
+
     def __str__(self):
         return f"{self.name} - {self.price} KZT"
