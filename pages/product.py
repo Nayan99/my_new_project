@@ -1,21 +1,59 @@
 # класс для товара
 class Product:
     def __init__(self, name, price, description, category):
-        # валидации данных
-        if price <= 0:
-            raise ValueError("Цена товара должна быть больше нуля")
-        if not isinstance(name, str) or not name:
-            raise ValueError("Имя товара должна быть строкой и не может быть пустым")
-        if not isinstance(description, str):
-            raise ValueError("Описание товара должна быть строкой")
-        if not isinstance(category, str):
-            raise ValueError("Категория товара должна быть строкой")
-
         # атрибуты объекта, которые будут хранить значения, переданные при создании объекта
-        self.name = name
-        self.price = price
-        self.description = description
-        self.category = category
+        self._name = None
+        self._price = None
+        self._description = None
+        self._category = None
+        self.name = name  # Будет использовать setter
+        self.price = price  # Будет использовать setter
+        self.description = description  # Будет использовать setter
+        self.category = category  # Будет использовать setter
+
+    # Getter и Setter для name
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str) or not value:
+            raise ValueError("Имя товара должно быть строкой или не может быть пустым")
+        self._name = value
+
+    # Getter и Setter для price
+    @property
+    def price(self):
+        return self._price
+
+    @price.setter
+    def price(self, value):
+        if value <= 0:
+            raise ValueError("Цена товара должна быть больше нуля")
+        self._price = value
+
+    # Getter и Setter для description
+    @property
+    def description(self):
+        return self._description
+
+    @description.setter
+    def description(self, value):
+        if not isinstance(value, str):
+            raise ValueError("Описание строки должно быть строкой")
+        self._description = value
+
+    # Getter и Setter для category
+    @property
+    def category(self):
+        return self._category
+
+    @category.setter
+    def category(self, value):
+        if not isinstance(value, str):
+            raise ValueError("Категория товара должна быть строкой")
+        self._category = value
 
     # метод изменения цены
     def update_price(self, new_price):
