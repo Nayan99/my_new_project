@@ -17,5 +17,13 @@ class Cart:
     def total_price(self):
         return sum(item.price for item in self.items)
 
+    # метод для подсчета количества товаров
+    def total_items(self):
+        return len(self.items)
+
+    # метод проверки пустой корзины
+    def is_empty(self):
+        return len(self.items) == 0
+
     def __str__(self):
         return f"Total: {self.total_price()} KZT"
