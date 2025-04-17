@@ -1,7 +1,7 @@
 from sqlalchemy import Column, Integer, String, ForeignKey, DECIMAL, Text, TIMESTAMP
 from sqlalchemy.orm import relationship
 from datetime import datetime
-from db import Base
+from pages.db import Base
 
 # Модель для пользователей
 class User(Base):
